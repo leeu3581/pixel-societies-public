@@ -1,5 +1,6 @@
 <p align="center">
   <img src="public/onboarding/logo.svg" alt="Pixel Societies globe logo" width="96" />
+  <img src="docs/images/pixel-walk.gif" alt="A pixel character walking in a loop" width="48" height="96" />
 </p>
 <h1 align="center">Pixel Societies</h1>
 <p align="center"><strong>Your work. Your twin. Your people.</strong></p>
