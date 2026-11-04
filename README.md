@@ -60,6 +60,12 @@ of the experience from the first interaction.
 
 ### 2. Discover what your work says about you
 
+<p align="center">
+  <a href="docs/images/history-import.png"><img src="docs/images/history-import.png" alt="A generated pixel twin ready to import Claude Code sessions into builder memory" width="1100" /></a>
+  <br />
+  <em>Your character is ready. Bring the work that makes it you.</em>
+</p>
+
 Add selected Claude Code sessions. **Muse Spark** connects the evidence across
 those sessions into current projects, interests, open questions and ways of
 working. The result is a set of readable, editable observations organised around:
@@ -102,6 +108,12 @@ Each connection has a visible explanation, context from both profiles, and a
 conversation starter. The product creates a next step: a question to discuss,
 a small experiment to try, or an idea to build together.
 
+<p align="center">
+  <a href="docs/images/complementary-matches.png"><img src="docs/images/complementary-matches.png" alt="A visual connection between Soomin and Yuri showing complementary strengths in prototyping and visual storytelling" width="1100" /></a>
+  <br />
+  <em>Your next collaborator may think differently. See where your strengths meet.</em>
+</p>
+
 ## Meta Muse is the intelligence throughout the experience
 
 Muse powers a sequence of transformations. Each stage creates the context the
@@ -135,6 +147,12 @@ transcription endpoint is available as an additional input capability; its full
 frontend flow is a next step.
 
 ## What makes this different
+
+<p align="center">
+  <a href="docs/images/personal-readings.png"><img src="docs/images/personal-readings.png" alt="Editable readings surfacing current projects, interests and ways of working from coding sessions" width="1100" /></a>
+  <br />
+  <em>From the tasks you asked for to the patterns you recognise in yourself.</em>
+</p>
 
 **Work becomes a living profile.** The starting point is what someone actually
 brings to their agent: projects, decisions, questions and intentions. Dated
