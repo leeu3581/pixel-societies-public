@@ -1,0 +1,59 @@
+# Pixel Societies — local full-stack dev/test.
+#
+#   docker compose up --build
+#
+# Brings up:
+#   - db:      Postgres 17, auto-seeded from backend/db/init/*.sql on first run
+#              (schema + data mirrors the Azure production target).
+#   - backend: FastAPI image (the SAME image deployed to Azure Container Apps),
+#              wired to the local db. Engine/society loops off by default.
+#
+# Point the backend at the real Azure DB instead by setting SUPABASE_DB_URL
+# in a root .env file (see .env.docker.example). Everything else is identical
+# to what runs in Azure, so "works here" == "works in Azure".
+
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: pixeladmin
+      POSTGRES_PASSWORD: localdevpass
+      POSTGRES_DB: pixelsocieties
+    ports:
+      - "5433:5432"          # host 5433 -> container 5432 (avoids clashing w/ local pg)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backend/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pixeladmin -d pixelsocieties"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: "8080"
+      ALLOWED_ORIGINS: "http://localhost:3000"
+      DISABLE_ENGINE_LOOP: "1"
+      DISABLE_SOCIETY_LOOP: "1"
+      # Local Postgres (the db service above). Override with the Azure DSN
+      # in a root .env to test against the real cloud database.
+      SUPABASE_DB_URL: "${SUPABASE_DB_URL:-postgresql://pixeladmin:localdevpass@db:5432/pixelsocieties}"
+      SUPABASE_URL: "${SUPABASE_URL:-}"
+      # LLM: placeholder is fine while the loops are disabled (no calls made).
+      LLM_PROVIDER: "${LLM_PROVIDER:-anthropic}"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      ANTHROPIC_MODEL: "${ANTHROPIC_MODEL:-claude-haiku-4-5-20251001}"
+      LOGFIRE_SERVICE_NAME: "pixel-societies-backend"
+      LOGFIRE_ENVIRONMENT: "docker-local"
+
+volumes:
+  pgdata:

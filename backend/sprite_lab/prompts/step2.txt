@@ -1,0 +1,1 @@
+create a spritesheet of the character shown in the exact format as the reference spritesheet. white background.

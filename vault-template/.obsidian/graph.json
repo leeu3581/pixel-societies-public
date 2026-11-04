@@ -1,0 +1,72 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:marketing/",
+      "color": {
+        "a": 1,
+        "rgb": 16028380
+      }
+    },
+    {
+      "query": "path:engineering/",
+      "color": {
+        "a": 1,
+        "rgb": 15730006
+      }
+    },
+    {
+      "query": "path:sales/",
+      "color": {
+        "a": 1,
+        "rgb": 6517489
+      }
+    },
+    {
+      "query": "path:support/",
+      "color": {
+        "a": 1,
+        "rgb": 1099960
+      }
+    },
+    {
+      "query": "path:product/",
+      "color": {
+        "a": 1,
+        "rgb": 3911602
+      }
+    },
+    {
+      "query": "path:success/",
+      "color": {
+        "a": 1,
+        "rgb": 1357238
+      }
+    },
+    {
+      "query": "path:_audits/",
+      "color": {
+        "a": 1,
+        "rgb": 8421504
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -0.7,
+  "nodeSizeMultiplier": 2.4,
+  "lineSizeMultiplier": 2.4,
+  "collapse-forces": false,
+  "centerStrength": 0.5,
+  "repelStrength": 18,
+  "linkStrength": 1,
+  "linkDistance": 320,
+  "scale": 0.7756677130808534,
+  "close": false
+}

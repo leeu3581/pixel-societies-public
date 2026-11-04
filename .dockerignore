@@ -1,0 +1,24 @@
+# Backend image uses the repository root to include canonical sprite references.
+# Allowlist only runtime inputs; credentials and frontend build artifacts stay out.
+**
+!backend/
+!backend/requirements.txt
+!backend/requirements.lock
+!backend/app/
+!backend/app/**
+!backend/groups/
+!backend/groups/**
+!backend/data/
+!backend/data/wikis/
+!backend/data/wikis/**
+!backend/start-azure.sh
+!public/
+!public/characters/
+!public/characters/refs/
+!public/characters/refs/portrait.png
+!public/characters/refs/sheet.png
+**/__pycache__
+**/*.pyc
+backend/data/wikis/_audits
+**/.env
+**/.env.*

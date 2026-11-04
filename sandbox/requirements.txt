@@ -1,0 +1,6 @@
+fastapi==0.115.4
+uvicorn[standard]==0.32.0
+pydantic==2.9.2
+# Optional: real Monty sandbox. Falls back to a subprocess+timeout runner
+# if not installed. Pin once the package name on PyPI is confirmed.
+# pydantic-monty

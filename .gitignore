@@ -1,0 +1,128 @@
+# Pixel Societies — root .gitignore
+#
+# After 2026-05-03 the Next.js frontend lives at repo root (was
+# frontend/ before; hoisted to fix Vercel monorepo manifest bug).
+# Backend at /backend, sandbox at /sandbox. Each subdir gitignore
+# still applies on top of this umbrella.
+
+.DS_Store
+*.log
+
+# ── Next.js frontend (now at root) ──────────────────────────
+/node_modules/
+/.next/
+/out/
+/.pnp
+.pnp.*
+*.tsbuildinfo
+next-env.d.ts
+/.swc
+/coverage
+
+# Vercel link
+.vercel
+
+# ── Backend ─────────────────────────────────────────────────
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/data/*
+!backend/data/wikis/
+backend/data/wikis/_audits/
+backend/data/wikis/*/lessons.md
+
+# ── Sandbox ─────────────────────────────────────────────────
+sandbox/.venv/
+sandbox/venv/
+sandbox/__pycache__/
+
+# ── Local-only ──────────────────────────────────────────────
+backups/
+
+# ── Noise from `npx skills add --all` ───────────────────────
+# The supabase agent-skills installer mirrors skills into every
+# supported AI-tool dir. We only want them in `.claude/skills/`;
+# the rest are untracked noise. Ignored here so a re-run doesn't
+# pollute git status.
+/.adal/
+/.agents/
+/.aider-desk/
+/.augment/
+/.bob/
+/.codeartsdoer/
+/.codebuddy/
+/.codemaker/
+/.codestudio/
+/.commandcode/
+/.continue/
+/.cortex/
+/.crush/
+/.devin/
+/.factory/
+/.forge/
+/.goose/
+/.hermes/
+/.iflow/
+/.junie/
+/.kilocode/
+/.kiro/
+/.kode/
+/.mcpjam/
+/.mux/
+/.neovate/
+/.obsidian/
+/.openhands/
+/.pi/
+/.pochi/
+/.qoder/
+/.qwen/
+/.roo/
+/.rovodev/
+/.tabnine/
+/.trae/
+/.vibe/
+/.windsurf/
+/.zencoder/
+skills-lock.json
+/skills/
+/.niia/
+
+# ── Secrets — env files everywhere ──────────────────────────
+**/.env
+**/.env.local
+.env*.local
+
+# Local credentials snapshot — contains test logins + API tokens
+# for both UAT and prod. NEVER commit. Share via 1Password / Bitwarden,
+# not git. The UAT-CREDENTIALS.md path is kept for back-compat.
+docs/CREDENTIALS.md
+docs/UAT-CREDENTIALS.md
+docs/CREDENTIALS.local.md
+
+# ── iOS ────────────────────────────────────────────────────
+ios/.build/
+ios/PixelSocieties.xcodeproj/xcuserdata/
+ios/PixelSocieties.xcodeproj/project.xcworkspace/xcuserdata/
+ios/DerivedData/
+ios/Debug.local.xcconfig
+ios/PixelSocieties/Resources/phaser-world.js
+ios/PixelSocieties/Resources/phaser.min.js
+
+# ── Editor / OS ─────────────────────────────────────────────
+.idea/
+.vscode/
+*.xcuserstate
+.env.local
+
+# All environment variants are private; only templates may be tracked.
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+
+# Local coding-agent guidance and generated handoffs are not submission artifacts.
+/.claude/
+/AGENTS.md
+/CLAUDE.md
+/docs/HANDOFF*.md
+/docs/handoff/

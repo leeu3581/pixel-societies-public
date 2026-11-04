@@ -1,0 +1,19 @@
+fastapi
+uvicorn[standard]
+pydantic-ai[anthropic,google,openai]
+fastmcp-slim[server]
+httpx
+python-dotenv
+websockets
+anthropic
+logfire[fastapi,httpx]
+asyncpg
+python-jose[cryptography]
+python-multipart
+opentelemetry-instrumentation-asyncpg
+pillow
+pillow-heif
+
+# Self-hosted auth password hashing (verifies migrated Supabase $2a$ hashes)
+bcrypt
+cryptography

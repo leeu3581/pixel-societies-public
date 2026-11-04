@@ -1,0 +1,17 @@
+**
+!requirements.txt
+!requirements.lock
+!app/
+!app/**
+!groups/
+!groups/**
+!data/
+!data/wikis/
+!data/wikis/**
+!start-azure.sh
+**/__pycache__
+**/*.pyc
+data/wikis/_audits
+
+**/.env
+**/.env.*

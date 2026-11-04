@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.local
+.DS_Store
+
+# Live runtime state — regenerated on boot via seed.py.
+# Wikis are committed so a fresh clone has identical seed pages
+# without booting the backend; recordings/skills/audits stay ignored.
+data/*
+!data/wikis/
+data/wikis/_audits/
+data/wikis/*/lessons.md
+
+# Drop-folder for bulk profile ingestion — see scripts/ingest_incoming.py.
+# Pasted bios are private; only the _example/ template is committed so
+# a fresh clone can see the layout.
+!data/incoming/
+data/incoming/*
+!data/incoming/_example/
+!data/incoming/_example/**
+
+# Docker/local env files with secrets
+.env.docker
+.env.*.local
+
+# Local DB seed (generated data, not source — regenerate via db/init/make-seed.sh)
+db/init/02_seed.sql

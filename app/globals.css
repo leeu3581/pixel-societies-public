@@ -1,0 +1,387 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm orange & brown palette */
+  --background: #fdf8f0;
+  --foreground: #2c1e10;
+  --card: #f5ead4;
+  --card-foreground: #2c1e10;
+  --muted: #ebe0c8;
+  --muted-foreground: #8a7d68;
+  --primary: #c4925b;
+  --primary-foreground: #fdf8f0;
+  --border: #d4c4a8;
+
+  /* Editorial warm cream theme */
+  --cream-bg: #fdf8f0;
+  --cream-card: #f5ead4;
+  --cream-soft: #faf3e6;
+  --cream-deep: #ebe0c8;
+  --ink: #2c1e10;
+  --ink-soft: #5a4a38;
+  --ink-mute: #8a7d68;
+  --accent-warm: #c4925b;
+  --accent-good: #7a9a5a;
+  --accent-warn: #b06a4a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Subtle mesh-style background for shell pages */
+.mesh-gradient {
+  background: var(--background);
+}
+
+/* Glass card used on the agent grid */
+.glass-card {
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --- Editorial cream theme utilities ---
+   Used by conversation page + profile drawer. */
+.editorial-page {
+  background:
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(196, 146, 91, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(176, 106, 74, 0.05) 0%, transparent 70%),
+    linear-gradient(175deg, #fdf8f0 0%, #f5ead4 50%, #ebe0c8 100%);
+  color: var(--ink);
+}
+.editorial-card {
+  background: var(--cream-card);
+  border-radius: 28px;
+  border: 1px solid rgba(26, 20, 16, 0.05);
+  box-shadow:
+    0 1px 2px rgba(26, 20, 16, 0.03),
+    0 12px 32px rgba(26, 20, 16, 0.04);
+}
+.editorial-soft {
+  background: var(--cream-soft);
+  border-radius: 20px;
+  border: 1px solid rgba(26, 20, 16, 0.06);
+}
+.editorial-tile {
+  background: #fefcf7;
+  border-radius: 20px;
+  border: 1px solid rgba(26, 20, 16, 0.06);
+  box-shadow: 0 1px 2px rgba(26, 20, 16, 0.02);
+}
+.eyebrow {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-mute);
+}
+.serif-display {
+  font-family: ui-serif, "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+  letter-spacing: -0.01em;
+}
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(44, 30, 16, 0.18);
+  background: #fefcf7;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+.btn-pill:hover:not(:disabled) {
+  background: #f5ead4;
+  border-color: var(--accent-warm);
+}
+.btn-pill:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-pill-dark {
+  background: #d4782a;
+  color: #fdf8f0;
+  border-color: #d4782a;
+}
+.btn-pill-dark:hover:not(:disabled) {
+  background: #e08830;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(44, 30, 16, 0.12);
+  background: #fefcf7;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* --- World-jump button --- */
+.jump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 9999px;
+  border: 2px solid #d4782a;
+  background: #fefcf7;
+  color: #d4782a;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  box-shadow: 3px 3px 0 #d4782a;
+}
+.jump-btn:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #d4782a;
+  background: #f5ead4;
+  color: #d4782a;
+}
+.jump-btn:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #d4782a;
+}
+.jump-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  animation: jumpBtnPulse 0.6s ease-in-out infinite;
+}
+.jump-btn-label {
+  line-height: 1;
+}
+@keyframes jumpBtnPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+/* --- Shadow cat companion (ported from UMfront) --- */
+.pixel-label {
+  display: inline-block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a7d68;
+}
+
+.shadow-note {
+  border: 1px solid rgba(44, 30, 16, 0.1);
+  border-radius: 1.45rem;
+  background: #fefcf7;
+  padding: 0.85rem 1rem 1rem;
+  box-shadow: 0 16px 30px rgba(44, 30, 16, 0.08);
+  color: #2c1e10;
+}
+
+.pet-halo {
+  position: absolute;
+  inset: auto;
+  bottom: -0.25rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  filter: blur(24px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.pet-halo.idle      { background: radial-gradient(circle, rgba(255, 212, 142, 0.24), transparent 70%); }
+.pet-halo.listening { background: radial-gradient(circle, rgba(126, 238, 186, 0.28), transparent 70%); }
+.pet-halo.thinking  { background: radial-gradient(circle, rgba(255, 204, 128, 0.35), transparent 70%); }
+.pet-halo.replying  { background: radial-gradient(circle, rgba(133, 214, 255, 0.32), transparent 70%); }
+
+.pet-idle   { animation: petFloat 4.8s ease-in-out infinite; image-rendering: pixelated; }
+.pet-run    { animation: petSprint 1.3s ease-in-out infinite; image-rendering: pixelated; }
+.pet-listen { animation: petListen 1.2s ease-in-out infinite; image-rendering: pixelated; }
+.pet-think  { animation: petThink 2.3s ease-in-out infinite; image-rendering: pixelated; }
+.pet-reply  { animation: petReply 0.95s ease-in-out infinite; image-rendering: pixelated; }
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%      { transform: translateY(-12px) scale(1.02); }
+}
+@keyframes petSprint {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%      { transform: translateY(-9px) scale(1.03); }
+}
+@keyframes petListen {
+  0%   { transform: translateY(0px) rotate(0deg) scale(1); }
+  35%  { transform: translateY(-4px) rotate(-4deg) scale(1.01); }
+  70%  { transform: translateY(-2px) rotate(2deg) scale(0.995); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+@keyframes petThink {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  30%      { transform: translateY(-6px) rotate(-3deg) scale(1.01); }
+  60%      { transform: translateY(-10px) rotate(1.5deg) scale(1.02); }
+}
+@keyframes petReply {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  30%      { transform: translateY(-8px) rotate(2deg) scale(1.03); }
+  65%      { transform: translateY(-3px) rotate(-2deg) scale(1.01); }
+}
+
+/* ── Twin onboarding: sprite assembly + voice interview ──────────── */
+
+/* Scan line that sweeps down the sprite preview */
+@keyframes twinScanLine {
+  0%   { top: 0%; opacity: 1; }
+  90%  { top: 95%; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.twin-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7aa7d9, #a8d4ff, #7aa7d9, transparent);
+  box-shadow: 0 0 8px rgba(122, 167, 217, 0.6), 0 0 20px rgba(122, 167, 217, 0.3);
+  animation: twinScanLine 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Pixelation container — crossfade from blurred to sharp */
+.twin-sprite-container {
+  image-rendering: pixelated;
+  transition: filter 1.2s ease-out;
+}
+.twin-sprite-container.generating {
+  filter: blur(3px) brightness(0.9);
+}
+.twin-sprite-container.ready {
+  filter: blur(0) brightness(1);
+}
+
+/* Gentle glow pulse behind the sprite preview box */
+@keyframes twinGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(122, 167, 217, 0.2), 3px 3px 0 #1f2a3c; }
+  50%      { box-shadow: 0 0 24px rgba(122, 167, 217, 0.45), 3px 3px 0 #1f2a3c; }
+}
+.twin-glow {
+  animation: twinGlow 2s ease-in-out infinite;
+}
+
+/* Sprite reveal: scale up from 0 with a bounce */
+@keyframes twinSpriteReveal {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  80%  { transform: scale(0.95) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.twin-sprite-reveal {
+  animation: twinSpriteReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Audio waveform bars */
+@keyframes twinWaveBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50%      { transform: scaleY(1); }
+}
+.twin-wave-bar {
+  width: 3px;
+  background: #7aa7d9;
+  border-radius: 2px;
+  transform-origin: bottom;
+  transition: transform 80ms ease-out;
+}
+
+/* Beat progress dots */
+.twin-beat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #1f2a3c;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.twin-beat-dot.active {
+  background: #7aa7d9;
+  transform: scale(1.2);
+}
+.twin-beat-dot.done {
+  background: #1f2a3c;
+}
+
+/* Room chat — Twitch-style: text loads fully, line slides right→left into place */
+@keyframes roomSlideIn {
+  from { transform: translateX(12px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.room-msg-in {
+  animation: roomSlideIn 0.25s ease-out both;
+}
+
+/* Transcript message bubble animation */
+@keyframes twinMsgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.twin-msg {
+  animation: twinMsgIn 0.25s ease-out;
+}
+
+/* Mic button pulse when listening */
+@keyframes twinMicPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(122, 167, 217, 0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(122, 167, 217, 0); }
+}
+.twin-mic-active {
+  animation: twinMicPulse 1.5s ease-in-out infinite;
+}
+
+/* Pixelating photo preview — canvas-based real pixelation */
+.twin-pixelate-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+}
+.twin-pixelate-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(122, 167, 217, 0.08) 3px,
+    rgba(122, 167, 217, 0.08) 4px
+  );
+  pointer-events: none;
+  animation: twinScanFade 3s ease-in-out infinite alternate;
+}
+@keyframes twinScanFade {
+  0%   { opacity: 0.4; }
+  100% { opacity: 0.9; }
+}

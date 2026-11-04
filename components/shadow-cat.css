@@ -1,0 +1,115 @@
+/* Shadow companion (ported from UMfront) */
+
+.pixel-label {
+  display: inline-block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8b5e26;
+}
+
+.shadow-note {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1.45rem;
+  background: #ffffff;
+  padding: 0.85rem 1rem 1rem;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
+  color: #2f2c28;
+}
+
+.pet-halo {
+  position: absolute;
+  inset: auto;
+  bottom: -0.25rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  filter: blur(24px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.pet-halo.idle      { background: radial-gradient(circle, rgba(255, 212, 142, 0.24), transparent 70%); }
+.pet-halo.listening { background: radial-gradient(circle, rgba(126, 238, 186, 0.28), transparent 70%); }
+.pet-halo.thinking  { background: radial-gradient(circle, rgba(255, 204, 128, 0.35), transparent 70%); }
+.pet-halo.replying  { background: radial-gradient(circle, rgba(133, 214, 255, 0.32), transparent 70%); }
+
+.pet-idle   { animation: petFloat 4.8s ease-in-out infinite; image-rendering: pixelated; }
+.pet-run    { animation: petSprint 1.3s ease-in-out infinite; image-rendering: pixelated; }
+.pet-listen { animation: petListen 1.2s ease-in-out infinite; image-rendering: pixelated; }
+.pet-think  { animation: petThink 2.3s ease-in-out infinite; image-rendering: pixelated; }
+.pet-reply  { animation: petReply 0.95s ease-in-out infinite; image-rendering: pixelated; }
+
+/* User sprite — replaces Drizzy when agent sprite is available */
+.user-sprite-motion {
+  display: block;
+  height: 18rem;
+  width: 10rem;
+  transform-origin: 50% 92%;
+}
+
+.user-portrait-img {
+  display: block;
+  width: 128px;
+  height: 170px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border: 4px solid #1f2a3c;
+  box-shadow: 6px 6px 0 #1f2a3c;
+}
+
+/* Fallback Drizzy sprite container */
+.drizzy-motion {
+  display: block;
+  height: 13rem;
+  width: 12rem;
+  transform-origin: 50% 92%;
+}
+
+.drizzy-sprite {
+  --drizzy-row: 0px;
+  display: block;
+  width: 192px;
+  height: 208px;
+  background-image: url("/shadow/drizzy-spritesheet.webp");
+  background-position: 0 var(--drizzy-row);
+  background-repeat: no-repeat;
+  background-size: 1536px 1872px;
+  image-rendering: pixelated;
+  animation: drizzyFrames 920ms steps(8) infinite;
+}
+
+.drizzy-idle { --drizzy-row: 0px; animation-duration: 1300ms; }
+.drizzy-run { --drizzy-row: -416px; animation-duration: 720ms; }
+.drizzy-wave { --drizzy-row: -624px; animation-duration: 980ms; }
+.drizzy-jump { --drizzy-row: -832px; animation-duration: 840ms; }
+
+@keyframes drizzyFrames {
+  from { background-position: 0 var(--drizzy-row); }
+  to   { background-position: -1536px var(--drizzy-row); }
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%      { transform: translateY(-12px) scale(1.02); }
+}
+@keyframes petSprint {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%      { transform: translateY(-9px) scale(1.03); }
+}
+@keyframes petListen {
+  0%   { transform: translateY(0px) rotate(0deg) scale(1); }
+  35%  { transform: translateY(-4px) rotate(-4deg) scale(1.01); }
+  70%  { transform: translateY(-2px) rotate(2deg) scale(0.995); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+@keyframes petThink {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  30%      { transform: translateY(-6px) rotate(-3deg) scale(1.01); }
+  60%      { transform: translateY(-10px) rotate(1.5deg) scale(1.02); }
+}
+@keyframes petReply {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  30%      { transform: translateY(-8px) rotate(2deg) scale(1.03); }
+  65%      { transform: translateY(-3px) rotate(-2deg) scale(1.01); }
+}
