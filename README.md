@@ -24,7 +24,7 @@ to search for.
 [The experience](#from-work-history-to-a-reason-to-meet) · [Why Meta Muse](#meta-muse-is-the-intelligence-throughout-the-experience) · [Run locally](#running-locally)
 
 <p align="center">
-  <img src="public/onboarding/map-bg.png" alt="The shared Pixel Societies world environment" width="1000" />
+  <img src="docs/images/pixel-world.png" alt="Pixel characters exploring the shared Pixel Societies world" width="1000" />
   <br />
   <em>A world of people, ideas, and reasons to connect.</em>
 </p>
